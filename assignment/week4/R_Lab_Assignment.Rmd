@@ -41,7 +41,7 @@ nb_obs <- ncol(mtcars)
 # Answer:
 print(paste("There are total of", nb_cars, "variables and", nb_obs, "observations in this data set."))
 ```
-
+"There are total of 32 variables and 11 observations in this data set."
 
 
 b. Print the summary statistics of the data set and report how many discrete and continuous variables are in the data set.
@@ -62,7 +62,7 @@ for (x in 1:ncol(mtcars)) {
 # Answer:
 print(paste("There are", d, "discrete variables and", c, "continuous variables in this data set."))
 ```
-
+"There are 6 discrete variables and 5 continuous variables in this data set."
 
 
 c. Calculate the mean, variance, and standard deviation for the variable **mpg** and assign them into variable names m, v, and s. Report the results in the print statement.
@@ -76,7 +76,7 @@ s <- sd(mtcars$mpg)
 
 print(paste("The average of Mile Per Gallon from this data set is ", m, " with variance ", v, " and standard deviation", s, "."))
 ```
-
+"The average of Mile Per Gallon from this data set is  20.090625  with variance  36.3241028225806  and standard deviation 6.0269480520891 ."
 
 
 d. Create two tables to summarize 1) average mpg for each cylinder class and 2) the standard deviation of mpg for each gear class.
@@ -102,7 +102,17 @@ df2
 
 
 ```
+ df
+  cyl   mean_m
+1   6 19.74286
+2   4 26.66364
+3   8 15.10000
 
+df2
+  gear     sd_g
+1    4 5.276764
+2    3 3.371618
+3    5 6.658979
 
 
 e. Create a crosstab that shows the number of observations belong to each cylinder and gear class combinations. The table should show how many observations given the car has 4 cylinders with 3 gears, 4 cylinders with 4 gears, etc. Report which combination is recorded in this data set and how many observations for this type of car.
@@ -137,7 +147,7 @@ for (x in 1:length(matrix1[,3])) {
 
 print(paste("The most common car type in this data set is car with", matrix1[I, 1], "cylinders and", matrix1[I, 2], "gears. There are total of", matrix1[I, 3], "cars belong to this specification in the data set."))
 ```
-
+"The most common car type in this data set is car with 8 cylinders and 3 gears. There are total of 12 cars belong to this specification in the data set."
 
 *** 
 
@@ -236,6 +246,15 @@ print(housingData[housingData$Market.Value.per.SqFt == min(housingData$Market.Va
 print(housingData[housingData$Market.Value.per.SqFt == max(housingData$Market.Value.per.SqFt),3])
 mean(housingData$Market.Value.per.SqFt)
 ```
+10.66
+max(housingData$Market.Value.per.SqFt)
+[1] 399.38
+print(housingData[housingData$Market.Value.per.SqFt == min(housingData$Market.Value.per.SqFt),3])
+[1] "Queens"
+print(housingData[housingData$Market.Value.per.SqFt == max(housingData$Market.Value.per.SqFt),3])
+[1] "Manhattan"
+mean(housingData$Market.Value.per.SqFt)
+[1] 133.1731
 
 b. Create multiple plots to demonstrates the correlations between different variables. Remember to label all axes and give title to each graph.
 
