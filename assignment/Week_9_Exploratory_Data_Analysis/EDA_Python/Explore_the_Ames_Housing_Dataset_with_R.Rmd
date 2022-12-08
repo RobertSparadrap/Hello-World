@@ -1,0 +1,95 @@
+---
+title: "DS311 - Basic R Lab Exercise"
+author: "Robert Harakaly"
+date: "8/23/2022"
+output:
+  pdf_document: default
+  html_document: default
+subtitle: "R Lab Exercise"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+df <- read.csv(file = './Week_9_Exploratory_Data_Analysis/EDA_Python/data/ames.csv')
+
+```
+
+```{r}
+head(df)
+nb_row <- nrow(df)
+nb_col <- ncol(df)
+if (nb_row == 1460)
+  print("Good")
+if (nb_col == 81)
+  print("GOOD2")
+
+```
+
+
+
+``` {r}
+str(df)
+```
+
+
+
+``` {r}
+print(paste(mean(df$SalePrice)))
+hist(df$SalePrice, breaks = 52)
+abline(v=mean(df$SalePrice),col="blue",lwd=2)
+```
+
+
+
+
+```{r}
+print(paste(mean(df$SalePrice)))
+print(paste(median(df$SalePrice)))
+print(paste(sd(df$SalePrice)))
+```
+
+```{r}
+hist(df$TotRmsAbvGrd, breaks = 52)
+abline(v=mean(df$TotRmsAbvGrd),col="blue",lwd=2)
+```
+
+```{r}
+print(paste(mean(df$TotRmsAbvGrd)))
+print(paste(median(df$TotRmsAbvGrd)))
+print(paste(sd(df$TotRmsAbvGrd)))
+```
+
+
+```{r}
+hist(df$OverallCond, breaks = 52)
+abline(v=mean(df$OverallCond),col="blue",lwd=2)
+```
+
+
+``` {r}
+print(paste(mean(df$OverallCond)))
+print(paste(median(df$OverallCond)))
+print(paste(sd(df$OverallCond)))
+```
+
+
+```{r}
+index <- grep("SalePrice", colnames(df))
+below_average_condition <- df[df$OverallCond < 5, index]
+average_condition <- df[df$OverallCond == 5, index]
+above_average_condition <- df[df$OverallCond > 5, index]
+```
+
+
+```{r}
+print(below_average_condition)
+nb1 <- length(seq(min(df$SalePrice),max(df$SalePrice),by=median(df$SalePrice)/20))
+hist(average_condition, col='blue', breaks = nb1, xlim = c(0,750000), ylim = c(0,70))
+hist(above_average_condition, col='green', add=TRUE, breaks = nb1, xlim = c(0,750000), ylim = c(0,70))
+hist(below_average_condition, col='red', add=TRUE, breaks = nb1, xlim = c(0,750000), ylim = c(0,70))
+```
+
